@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.verify-account-box {
+  @apply  lg:h-20 lg:w-20 focus:ring-2 ring-red-400 md:h-20 sm:h-20 sm:w-20 md:w-20 h-15 w-15  shadow-lg rounded bg-gray-300 text-2xl flex text-center focus:outline-red-400
+}
+
+.dashboard-card {
+ @apply h-[400px] mx-auto w-[80%] bg-white shadow-lg rounded-2xl mt-7
+}
