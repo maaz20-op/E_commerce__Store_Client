@@ -65,20 +65,7 @@ export default function AuthForm() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          {!isLogin && (
-            <div className="relative">
-              <User className="absolute left-3 top-3 text-red-400" size={20} />
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
-                required
-              />
-            </div>
-          )}
+        
 
           <div className="relative">
             <Mail className="absolute left-3 top-3 text-red-400" size={20} />
