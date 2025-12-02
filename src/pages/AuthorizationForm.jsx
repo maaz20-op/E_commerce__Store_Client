@@ -1,12 +1,20 @@
-import React, { useState } from "react";
-import { User, Mail, Lock} from "lucide-react";
+import React, { useState, useContext } from "react";
+import { Mail, Lock } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
-
+import { SignupUserLocal, LoginUserLocal } from "../api/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import Loader from "../utils/loader.jsx";
 
 export default function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(""); // Add Error State
+
+  const { setAuthUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -15,34 +23,55 @@ export default function AuthForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setErrorMsg(""); // Reset error before request
+
+    let res;
+
     if (isLogin) {
-      console.log("Logging in with:", formData);
-      // Call your login API here
+      res = await LoginUserLocal(formData.email, formData.password, navigate, setAuthUser);
     } else {
-      console.log("Signing up with:", formData);
-      // Call your signup API here
+      res = await SignupUserLocal(formData.email, formData.password, navigate, setAuthUser);
+    }
+
+    setLoading(false);
+
+    // ❗ Error detection: if success false → show error
+    if (!res?.data?.success) {
+      setErrorMsg(res?.data?.message || "Something went wrong");
     }
   };
 
   const handleGoogleLogin = () => {
-    console.log("Google login clicked");
-    // Call your Google login API / OAuth here
+    window.location.href = "http://localhost:3000/api/auth/google";
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="w-full max-w-md p-8 bg-red-50 rounded-2xl shadow-md">
+
         {/* Logo */}
         <div className="flex justify-center mb-6">
-       <h1 className="text-red-400 text-2xl font-bold">Alkaram Cloth House</h1> 
+          <h1 className="text-red-400 text-2xl font-bold">Alkaram Cloth House</h1>
         </div>
+
+        {/* 🔥 Show Error */}
+        {errorMsg && (
+          <p className="mb-4 text-center text-red-600 font-medium bg-red-100 py-2 rounded-lg">
+            {errorMsg}
+          </p>
+        )}
 
         {/* Toggle */}
         <div className="flex justify-center mb-6">
           <button
-            onClick={() => setIsLogin(true)}
+            onClick={() => {
+              setIsLogin(true);
+              setLoading(false);
+              setErrorMsg(""); // Reset error on toggle
+            }}
             className={`px-4 py-2 rounded-l-xl font-medium ${
               isLogin
                 ? "bg-red-400 text-white"
@@ -51,8 +80,13 @@ export default function AuthForm() {
           >
             Login
           </button>
+
           <button
-            onClick={() => setIsLogin(false)}
+            onClick={() => {
+              setIsLogin(false);
+              setLoading(false);
+              setErrorMsg(""); // Reset error on toggle
+            }}
             className={`px-4 py-2 rounded-r-xl font-medium ${
               !isLogin
                 ? "bg-red-400 text-white"
@@ -65,8 +99,8 @@ export default function AuthForm() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-        
 
+          {/* Email */}
           <div className="relative">
             <Mail className="absolute left-3 top-3 text-red-400" size={20} />
             <input
@@ -75,11 +109,12 @@ export default function AuthForm() {
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+              className="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-300"
               required
             />
           </div>
 
+          {/* Password */}
           <div className="relative">
             <Lock className="absolute left-3 top-3 text-red-400" size={20} />
             <input
@@ -88,40 +123,49 @@ export default function AuthForm() {
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300"
+              className="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-300"
               required
             />
           </div>
 
           {isLogin && (
-            <div className="text-right text-sm text-red-500 hover:underline cursor-pointer">
-              Forgot Password?
-            </div>
+            <Link to="/verify-account">
+              <div className="text-right text-sm text-red-500 hover:underline cursor-pointer">
+                Forgot Password?
+              </div>
+            </Link>
           )}
 
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-red-400 text-white p-3 rounded-lg font-medium hover:bg-red-500 transition"
+            disabled={loading}
+            className="w-full bg-red-400 text-white p-3 rounded-lg font-medium hover:bg-red-500 transition disabled:opacity-60"
           >
-            {isLogin ? "Login" : "Sign Up"}
+            <div className="flex justify-center items-center gap-4">
+              {isLogin ? "Login" : "Signup"}
+              {loading && <Loader size={20} />}
+            </div>
           </button>
 
-          {/* OR divider */}
+          {/* Divider */}
           <div className="flex items-center my-4">
             <hr className="flex-grow border-t border-gray-300" />
             <span className="mx-2 text-gray-400">OR</span>
             <hr className="flex-grow border-t border-gray-300" />
           </div>
 
-          {/* Google Login */}
-          <button
-            type="button"
-            onClick={handleGoogleLogin}
-            className="w-full flex items-center justify-center gap-2 p-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
-          >
-          <FcGoogle size={24} className="text-red-400" />
-            {isLogin ? "Login with Google" : "Sign Up with Google"}
-          </button>
+          {/* Google Button */}
+          {isLogin && (
+            <button
+              type="button"
+              onClick={handleGoogleLogin}
+              className="w-full flex items-center justify-center gap-2 p-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
+            >
+              <FcGoogle size={24} />
+              Login with Google
+            </button>
+          )}
         </form>
       </div>
     </div>
