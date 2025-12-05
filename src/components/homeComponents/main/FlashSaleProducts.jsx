@@ -118,7 +118,7 @@ const handleDeleteProduct = async (prodId) =>{
 
               {/* Buttons */}
            {
-           isAuthUser?.userId?.role === "use"?
+           isAuthUser?.userId?.role === "admin"?
              (  <div className="mt-4 flex gap-2">
                 <button
                   className="flex-1 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition-colors text-sm font-medium"
