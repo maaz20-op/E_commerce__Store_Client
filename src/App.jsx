@@ -50,11 +50,11 @@ return <div ref={appRef}>
 
         <Route path='/contact' element={<ContactUs/>}></Route>
          <Route path='/create-product' element={
-<ProtectedRoute adminOnly={false}>
+<ProtectedRoute adminOnly={true}>
      <AdminCreateProduct/>
  </ProtectedRoute> }></Route>
           <Route path='/dashboard' element={
-            <ProtectedRoute adminOnly={false}>
+            <ProtectedRoute adminOnly={true}>
     <Dashboard/>
  </ProtectedRoute> }></Route>
 
