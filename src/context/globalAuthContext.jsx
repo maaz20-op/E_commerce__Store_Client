@@ -7,12 +7,10 @@ export default function ProtectedRoute({ children, adminOnly = false }) {
   const { isAuthUser, loading } = useContext(AuthContext);
 
   if (loading) return <div>Loading...</div>; // wait until auth is checked
-
-  if (!isAuthUser) return <Navigate to="/register" replace />; // not logged in
+; // not logged in
 
 // if(adminOnly && isAuthUser.userId?.role !== "admin") return <Navigate to="/" replace />
  
 
   return children; // authorized
 }
-
