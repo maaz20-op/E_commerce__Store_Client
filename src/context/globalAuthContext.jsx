@@ -10,7 +10,7 @@ export default function ProtectedRoute({ children, adminOnly = false }) {
 
   if (!isAuthUser) return <Navigate to="/register" replace />; // not logged in
 
-if(adminOnly && isAuthUser.userId?.role !== "admin") return <Navigate to="/" replace />
+// if(adminOnly && isAuthUser.userId?.role !== "admin") return <Navigate to="/" replace />
  
 
   return children; // authorized

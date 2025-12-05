@@ -1,10 +1,32 @@
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+
+
 export default function HeroSection() {
+const leftText = useRef(null)
+const rightImgBox = useRef(null)
+useEffect(()=> {
+  gsap.from(leftText.current, {
+    x: -200,
+    opacity: 0,
+    duration: 1,
+  })
+})
+
+useEffect(()=> {
+  gsap.from(rightImgBox.current, {
+    x: 200,
+    opacity: 0,
+    duration: 1,
+  })
+})
+
   return (
     <section className="w-full bg-[#FFF5F6]">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 grid-cols-1 items-center gap-10 px-6 py-12">
 
         {/* LEFT TEXT */}
-        <div className="space-y-4">
+        <div  ref={leftText} className="space-y-4">
           <p className="text-sm lg:mt-24 font-semibold text-red-500">
             Best Products
           </p>
@@ -23,7 +45,7 @@ export default function HeroSection() {
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className=" flex justify-center items-center min-h-[300px]">
+        <div ref={rightImgBox} className=" flex justify-center items-center min-h-[300px]">
           
           
        <div className=" w-[700px]  flex items-center  justify-center h-80 overflow-hidden">
@@ -43,7 +65,7 @@ export default function HeroSection() {
   
 </div>
   <img
-    src="https://iili.io/fdSOI1I.png"
+    src="/hero-image.png"
     alt="Fashion Model"
     className=" object-cover  h-[350px]  sm:h-[250px] md:w-[300px] lg:h-[400px]  absolute "
   />

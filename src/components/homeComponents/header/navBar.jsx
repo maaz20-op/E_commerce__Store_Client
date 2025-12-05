@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
@@ -6,10 +6,12 @@ import { AuthContext } from "../../../context/AuthContext";
 import { CartContext } from "../../../context/cartContext";
 import { isAxiosError } from "axios";
 
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { isAuthUser, loading, logout } = useContext(AuthContext);
     const { cart } = useContext(CartContext);
+
 
 
     
@@ -85,7 +87,7 @@ export default function Navbar() {
            {/* Profile Pic */}
               <div className="relative ml-13">
                 <img
-                  src={isAuthUser?.userId?.profilePic ||   "https://iili.io/FnrRren.png"}
+                  src={isAuthUser?.userId?.profilePic ||   "/user-profile.png"}
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover border-2 border-red-500 cursor-pointer"
                 />
