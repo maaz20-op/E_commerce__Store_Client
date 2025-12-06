@@ -140,14 +140,14 @@ export default function Navbar() {
             Home
           </div>
           </Link> 
-        <Link to='/dasboard'>
+        <Link to='/dashboard'>
         <div className="hover:text-red-500 text-left flex items-center gap-2">
            Dashboard
           </div>
           </Link> 
 
          <Link to='/create-product'>
-          <div className=" flex  gap-4 relative hover:bg-red-600 p bg-red-400 p-1 rounded-full w-25 cursor-pointer hover:text-red-500">
+          <div className=" hover:bg-red-600 p bg-red-400 p-1 rounded-full w-25 cursor-pointer hover:text-red-500">
            create Product
           </div> </Link>
         
