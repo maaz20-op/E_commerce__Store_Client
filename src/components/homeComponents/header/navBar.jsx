@@ -134,7 +134,7 @@ export default function Navbar() {
           )}
 
        {
-        isAuthUser && isAuthUser?.userId?.role === "user"? <>
+        isAuthUser && isAuthUser?.userId?.role === "admin"? <>
          <Link to='/'>
         <div className="hover:text-red-500 text-left flex items-center gap-2">
             Home
@@ -158,11 +158,7 @@ export default function Navbar() {
             Home
           </div>
           </Link> 
-         <Link to='/'>
-        <div className="hover:text-red-500 text-left flex items-center gap-2">
-            Home
-          </div>
-          </Link> 
+      
          <Link to='/contact'>
         <div className="hover:text-red-500 text-left flex items-center gap-2">
             contactUs
