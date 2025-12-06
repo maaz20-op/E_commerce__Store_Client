@@ -10,7 +10,7 @@ export default function ContactUs() {
 
       {/* Subtitle / Branding */}
       <p className="text-center text-gray-600 mb-12 max-w-3xl text-lg md:text-xl">
-        Welcome to <span className="font-semibold text-indigo-600">Alkaram Cloth House</span> — where premium quality meets modern style. Reach out to us for any inquiries or support.
+        Welcome to <span className="font-semibold text-indigo-600">Alkaram Collections</span> — where premium quality meets modern style. Reach out to us for any inquiries or support.
       </p>
 
       {/* Info Cards */}
@@ -56,7 +56,7 @@ export default function ContactUs() {
 
       {/* Footer / Branding */}
       <p className="mt-16 text-gray-500 text-center text-sm">
-        &copy; 2025 <span className="font-semibold text-indigo-600">Alkaram Cloths House</span>. All rights reserved.
+        &copy; 2025 <span className="font-semibold text-indigo-600">Alkaram Collections</span>. All rights reserved.
       </p>
     </div>
   );

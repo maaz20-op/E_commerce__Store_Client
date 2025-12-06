@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 import { AuthContext } from "../../../context/AuthContext";
 import { CartContext } from "../../../context/cartContext";
-import { isAxiosError } from "axios";
-
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -22,7 +20,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img src="/AppLogo.jpeg" alt="Logo" className="w-13 h-13 rounded-full object-contain" />
-          <h1 className="font-bold text-xl text-red-600">Alkaram Cloth House</h1>
+          <h1 className="font-bold text-xl text-red-600">Alkaram Collections</h1>
         </div>
 
         {/* Search Bar */}
@@ -73,7 +71,8 @@ export default function Navbar() {
          isAuthUser?.userId?.role === 'admin'?(<Link to='/dashboard'><span>Dashboard</span></Link> ):""}
           {
          isAuthUser?.userId?.role === 'admin'?(<Link to='/create-product'><span>Create Product</span></Link> ):""}
-            {isAuthUser && isAuthUser?.userId?.role === "user"?(<Link to='/cart'><div className="relative hover:bg-red-600 p bg-red-400 p-1 rounded-full cursor-pointer hover:text-red-500">
+            {isAuthUser && isAuthUser?.userId?.role === "user"?(<Link to='/cart'>
+          <div className="relative hover:bg-red-600 p bg-red-400 p-1 rounded-full cursor-pointer hover:text-red-500">
            <span><ShoppingCart size={20} color="white"/></span>
             <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
               {cart.length || 0}
@@ -134,15 +133,51 @@ export default function Navbar() {
             </Link>
           )}
 
-        <Link to='/contact'>
+       {
+        isAuthUser && isAuthUser?.userId?.role === "user"? <>
+         <Link to='/'>
+        <div className="hover:text-red-500 text-left flex items-center gap-2">
+            Home
+          </div>
+          </Link> 
+        <Link to='/dasboard'>
+        <div className="hover:text-red-500 text-left flex items-center gap-2">
+           Dashboard
+          </div>
+          </Link> 
+
+         <Link to='/create-product'>
+          <div className=" flex  gap-4 relative hover:bg-red-600 p bg-red-400 p-1 rounded-full w-25 cursor-pointer hover:text-red-500">
+           create Product
+          </div> </Link>
+        
+        </>: <>
+        
+        <Link to='/'>
+        <div className="hover:text-red-500 text-left flex items-center gap-2">
+            Home
+          </div>
+          </Link> 
+         <Link to='/'>
+        <div className="hover:text-red-500 text-left flex items-center gap-2">
+            Home
+          </div>
+          </Link> 
+         <Link to='/contact'>
         <div className="hover:text-red-500 text-left flex items-center gap-2">
             contactUs
           </div>
           </Link> 
 
-          <button className="hover:text-red-500 text-left flex items-center gap-2">
-            🛒 Cart    {cart.length || 0} items
-          </button>
+         <Link to='/cart'>
+          <div className=" flex  gap-4 relative hover:bg-red-600 p bg-red-400 p-1 rounded-full w-25 cursor-pointer hover:text-red-500">
+           <span><ShoppingCart size={20} color="white"/></span>
+            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+              {cart.length || 0}
+            </span>
+            <span className="text-white">Cart</span>
+          </div> </Link></>
+       } 
         </div>
       )}
     </nav>
