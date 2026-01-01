@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container mx-auto px-6 sm:px-12 lg:px-24 py-16 grid grid-cols-1 sm:grid-cols-3 gap-10">
         {/* About Section */}
         <div>
-          <h3 className="text-2xl font-bold mb-4 text-gray-900">Alkaram Collections</h3>
+          <h3 className="text-2xl font-bold mb-4 text-gray-900">Glory Collections</h3>
           <p className="text-gray-800 text-sm sm:text-base">
             Trendy clothes for all seasons. Stay stylish and feel confident with our curated collections.
           </p>
@@ -26,15 +26,15 @@ export default function Footer() {
         {/* Contact Info */}
         <div>
           <h3 className="text-2xl font-bold mb-4 text-gray-900">Contact Us</h3>
-          <p className="text-gray-800 text-sm sm:text-base">Support Email: s90144834@gmail.com</p>
-          <p className="text-gray-800 text-sm sm:text-base">Phone: 03115437638</p>
-          <p className="text-gray-800 text-sm sm:text-base">Address: Pakistan, punjab, Chakwal, Chapar Bazar</p>
+          <p className="text-gray-800 text-sm sm:text-base">Support Email:  maazcoding54@gmail.com</p>
+          <p className="text-gray-800 text-sm sm:text-base">Phone: 03242015743</p>
+          <p className="text-gray-800 text-sm sm:text-base">Address: Pakistan, karachi, Nazimabad, dollmen mall</p>
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="bg-red-400 flex gap-6 justify-center items-center text-white text-center py-4 mt-8 text-sm sm:text-base">
-       <span> © 2025 Alkaram Collections. All rights reserved.</span> <span className="text-black font-medium">Website Developer: Maaz Javed
+       <span> © 2025 Glory Collections. All rights reserved.</span> <span className="text-black font-medium">Website Developer: Maaz Javed
          <p className="text-black font-medium">Website Developer Email: maazcoding54@gmail.com</p></span>
       </div>
     </footer>

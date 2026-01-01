@@ -109,7 +109,7 @@ if(res?.data?.success) {
         {/* Easy Paisa Manual Transfer */}
         <div className="flex justify-between mt-4 font-bold text-md">
           <span>Our EasyPaisa Account Number:</span>
-          <span>03165068169</span>
+          <span>dummy Number</span>
         </div>
 
         {/* Transaction Input */}

@@ -10,7 +10,7 @@ export default function ContactUs() {
 
       {/* Subtitle / Branding */}
       <p className="text-center text-gray-600 mb-12 max-w-3xl text-lg md:text-xl">
-        Welcome to <span className="font-semibold text-indigo-600">Alkaram Collections</span> — where premium quality meets modern style. Reach out to us for any inquiries or support.
+        Welcome to <span className="font-semibold text-indigo-600">Glory Collections</span> — where premium quality meets modern style. Reach out to us for any inquiries or support.
       </p>
 
       {/* Info Cards */}
@@ -43,10 +43,10 @@ export default function ContactUs() {
         <div className="bg-indigo-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
           <h2 className="text-xl font-semibold mb-3 text-gray-800">Get in Touch</h2>
           <p className="text-gray-700 mb-2">
-            📧 Email: <a href="mailto:info@alkaramclothes.com" className="text-indigo-600">s90144834@gmail.con</a>
+            📧 Email: <a href="mailto:info@alkaramclothes.com" className="text-indigo-600"> maazcoding54@gmail.com</a>
           </p>
           <p className="text-gray-700 mb-2">
-            📞 Phone: <a href="tel:+923001234567" className="text-indigo-600">03115437638</a>
+            📞 Phone: <a href="tel:+923001234567" className="text-indigo-600">03242015743</a>
           </p>
           <p className="text-gray-700">
             We are always happy to help! Send us a message and our support team will respond as soon as possible.
@@ -56,7 +56,7 @@ export default function ContactUs() {
 
       {/* Footer / Branding */}
       <p className="mt-16 text-gray-500 text-center text-sm">
-        &copy; 2025 <span className="font-semibold text-indigo-600">Alkaram Collections</span>. All rights reserved.
+        &copy; 2025 <span className="font-semibold text-indigo-600">Glory Collections</span>. All rights reserved.
       </p>
     </div>
   );

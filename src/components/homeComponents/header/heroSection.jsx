@@ -32,11 +32,11 @@ useEffect(()=> {
           </p>
 
           <h1 className="text-3xl md:text-4xl  font-bold leading-tight text-gray-800">
-            The Name of Trust, <span className="text-red-500">Alkaram Collections!</span>
+            The Name of Trust, <span className="text-red-500">Glory Collections!</span>
           </h1>
 
           <p className="text-gray-600 md:w-4/5">
-            Discover your fashion style, dive into fashion’s depth, and make a splash with <span className="text-black">Alkaram Collections</span> – where the latest trends flow every day!
+            Discover your fashion style, dive into fashion’s depth, and make a splash with <span className="text-black">Glory Collections</span> – where the latest trends flow every day!
           </p>
 
           <button className="bg-red-500 px-6 py-3 rounded-full text-white font-medium hover:bg-red-600 transition">

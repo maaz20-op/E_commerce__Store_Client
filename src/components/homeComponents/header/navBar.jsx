@@ -20,7 +20,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img src="/AppLogo.jpeg" alt="Logo" className="w-13 h-13 rounded-full object-contain" />
-          <h1 className="font-bold text-xl text-red-600">Alkaram Collections</h1>
+          <h1 className="font-bold text-xl text-red-600">Glory Collections</h1>
         </div>
 
         {/* Search Bar */}
